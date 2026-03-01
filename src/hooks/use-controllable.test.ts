@@ -33,7 +33,7 @@ describe('useControllable', () => {
     it('fires onChange callback when setValue is called', () => {
       const onChange = vi.fn();
       const { result } = renderHook(() =>
-        useControllable(undefined, 'a', onChange),
+        useControllable<string>(undefined, 'a', onChange),
       );
 
       act(() => {
@@ -72,7 +72,7 @@ describe('useControllable', () => {
 
     it('does not update internal state when setValue is called', () => {
       const onChange = vi.fn();
-      const { result, rerender } = renderHook(
+      const { result } = renderHook(
         ({ value }) => useControllable(value, 'default', onChange),
         { initialProps: { value: 'first' as string | undefined } },
       );
