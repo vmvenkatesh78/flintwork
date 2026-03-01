@@ -1,0 +1,65 @@
+{
+  "$description": "Semantic typography tokens — maps text roles to global primitives. These are theme-independent.",
+  "typography": {
+    "heading": {
+      "xl": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.4xl}" },
+        "fontWeight":  { "$value": "{fontWeight.bold}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      },
+      "lg": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.3xl}" },
+        "fontWeight":  { "$value": "{fontWeight.semibold}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      },
+      "md": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.2xl}" },
+        "fontWeight":  { "$value": "{fontWeight.semibold}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      },
+      "sm": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.xl}" },
+        "fontWeight":  { "$value": "{fontWeight.semibold}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      }
+    },
+    "body": {
+      "lg": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.md}" },
+        "fontWeight":  { "$value": "{fontWeight.regular}" },
+        "lineHeight":  { "$value": "{lineHeight.normal}" }
+      },
+      "md": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.sm}" },
+        "fontWeight":  { "$value": "{fontWeight.regular}" },
+        "lineHeight":  { "$value": "{lineHeight.normal}" }
+      },
+      "sm": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.xs}" },
+        "fontWeight":  { "$value": "{fontWeight.regular}" },
+        "lineHeight":  { "$value": "{lineHeight.normal}" }
+      }
+    },
+    "label": {
+      "lg": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.sm}" },
+        "fontWeight":  { "$value": "{fontWeight.medium}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      },
+      "md": {
+        "fontFamily":  { "$value": "{fontFamily.sans}" },
+        "fontSize":    { "$value": "{fontSize.xs}" },
+        "fontWeight":  { "$value": "{fontWeight.medium}" },
+        "lineHeight":  { "$value": "{lineHeight.tight}" }
+      }
+    }
+  }
+}
