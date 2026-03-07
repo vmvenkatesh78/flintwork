@@ -41,7 +41,7 @@ export function DialogTrigger({ children }: DialogTriggerProps) {
 
   return cloneElement(children as ReactElement<Record<string, unknown>>, {
     ref: (node: HTMLElement | null) => {
-      triggerRef.current = node;
+      (triggerRef as React.MutableRefObject<HTMLElement | null>).current = node;
 
       // Preserve the child's existing ref
       const childRef = (children as unknown as { ref?: React.Ref<HTMLElement> }).ref;

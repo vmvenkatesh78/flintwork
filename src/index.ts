@@ -1,16 +1,8 @@
-/**
- * Flintwork Design System
- *
- * A hand-crafted design system with headless primitives,
- * token-driven theming, and built-in accessibility.
- *
- * @packageDocumentation
- */
+// Styled components — the default export.
+// Consumers: import { Button } from 'flintwork';
+export { Button } from './styled';
 
-// Primitives will be exported here as they are built in Phase 2.
-// Styled components will be added in Phase 3.
-//
-// Example future exports:
-//   export { Button } from './primitives/button';
-//   export { Dialog } from './primitives/dialog';
-//   export { Tabs } from './primitives/tabs';
+// Re-export Dialog and Tabs from primitives until styled wrappers exist.
+// These will move to styled exports in subsequent phases.
+export { Dialog } from './primitives/dialog';
+export { Tabs } from './primitives/tabs';

@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Flintwork — Styled Button
+   
+   Uses Option B: intermediate --_ variables declared once in the base
+   selector, swapped by variant and size selectors. Structure is defined
+   once. Variants only reassign values.
+   
+   Requires: dist/tokens/tokens.css (or light.css + dark.css) loaded first.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base — structure and shared properties
+   -------------------------------------------------------------------------- */
+
+[data-fw-button] {
+  /* Intermediate variables — private to this component */
+  --_bg: transparent;
+  --_bg-hover: transparent;
+  --_bg-active: transparent;
+  --_text: inherit;
+  --_border: transparent;
+  --_padding-x: var(--fw-button-md-paddingX);
+  --_padding-y: var(--fw-button-md-paddingY);
+  --_font-size: var(--fw-button-md-fontSize);
+
+  /* Applied properties — never repeated in variant/size selectors */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--_padding-y) var(--_padding-x);
+  font-family: var(--fw-fontFamily-sans);
+  font-size: var(--_font-size);
+  font-weight: var(--fw-button-fontWeight);
+  line-height: var(--fw-lineHeight-tight);
+  color: var(--_text);
+  background-color: var(--_bg);
+  border: 1px solid var(--_border);
+  border-radius: var(--fw-button-borderRadius);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   Variants — only swap --_ values
+   -------------------------------------------------------------------------- */
+
+[data-fw-button][data-variant="primary"] {
+  --_bg: var(--fw-button-primary-bg);
+  --_bg-hover: var(--fw-button-primary-bgHover);
+  --_bg-active: var(--fw-button-primary-bgActive);
+  --_text: var(--fw-button-primary-text);
+  --_border: var(--fw-button-primary-border);
+}
+
+[data-fw-button][data-variant="secondary"] {
+  --_bg: var(--fw-button-secondary-bg);
+  --_bg-hover: var(--fw-button-secondary-bgHover);
+  --_bg-active: var(--fw-button-secondary-bgActive);
+  --_text: var(--fw-button-secondary-text);
+  --_border: var(--fw-button-secondary-border);
+}
+
+[data-fw-button][data-variant="danger"] {
+  --_bg: var(--fw-button-danger-bg);
+  --_bg-hover: var(--fw-button-danger-bgHover);
+  --_bg-active: var(--fw-button-danger-bgActive);
+  --_text: var(--fw-button-danger-text);
+  --_border: var(--fw-button-danger-border);
+}
+
+[data-fw-button][data-variant="ghost"] {
+  --_bg: var(--fw-button-ghost-bg);
+  --_bg-hover: var(--fw-button-ghost-bgHover);
+  --_bg-active: var(--fw-button-ghost-bgActive);
+  --_text: var(--fw-button-ghost-text);
+  --_border: var(--fw-button-ghost-border);
+}
+
+/* --------------------------------------------------------------------------
+   Sizes — only swap --_ values
+   -------------------------------------------------------------------------- */
+
+[data-fw-button][data-size="sm"] {
+  --_padding-x: var(--fw-button-sm-paddingX);
+  --_padding-y: var(--fw-button-sm-paddingY);
+  --_font-size: var(--fw-button-sm-fontSize);
+}
+
+[data-fw-button][data-size="md"] {
+  --_padding-x: var(--fw-button-md-paddingX);
+  --_padding-y: var(--fw-button-md-paddingY);
+  --_font-size: var(--fw-button-md-fontSize);
+}
+
+[data-fw-button][data-size="lg"] {
+  --_padding-x: var(--fw-button-lg-paddingX);
+  --_padding-y: var(--fw-button-lg-paddingY);
+  --_font-size: var(--fw-button-lg-fontSize);
+}
+
+/* --------------------------------------------------------------------------
+   States — swap only what changes
+   -------------------------------------------------------------------------- */
+
+[data-fw-button]:hover:not(:disabled):not([aria-disabled="true"]):not([data-loading]) {
+  --_bg: var(--_bg-hover);
+}
+
+[data-fw-button]:active:not(:disabled):not([aria-disabled="true"]):not([data-loading]) {
+  --_bg: var(--_bg-active);
+}
+
+/* Focus-visible ring — keyboard focus only, not mouse clicks */
+[data-fw-button]:focus-visible {
+  outline: 2px solid var(--fw-button-focusRing);
+  outline-offset: 2px;
+}
+
+/* Disabled — native disabled or aria-disabled, combined with :is() */
+[data-fw-button]:is(:disabled, [aria-disabled="true"]) {
+  --_bg: var(--fw-button-disabled-bg);
+  --_text: var(--fw-button-disabled-text);
+  --_border: var(--fw-button-disabled-border);
+  cursor: not-allowed;
+}
+
+/* Loading state */
+[data-fw-button][data-loading] {
+  cursor: wait;
+  opacity: 0.7;
+}

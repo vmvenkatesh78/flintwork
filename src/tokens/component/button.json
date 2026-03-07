@@ -22,15 +22,34 @@
       "text":        { "$value": "{color.text.inverse}" },
       "border":      { "$value": "transparent" }
     },
+    "ghost": {
+      "bg":          { "$value": "transparent" },
+      "bgHover":     { "$value": "{color.bg.hover}" },
+      "bgActive":    { "$value": "{color.bg.active}" },
+      "text":        { "$value": "{color.interactive.default}" },
+      "border":      { "$value": "transparent" }
+    },
     "disabled": {
       "bg":          { "$value": "{color.bg.disabled}" },
       "text":        { "$value": "{color.text.disabled}" },
       "border":      { "$value": "{color.border.disabled}" }
     },
+    "sm": {
+      "paddingX":    { "$value": "{spacing.3}" },
+      "paddingY":    { "$value": "{spacing.1}" },
+      "fontSize":    { "$value": "{fontSize.xs}" }
+    },
+    "md": {
+      "paddingX":    { "$value": "{spacing.4}" },
+      "paddingY":    { "$value": "{spacing.2}" },
+      "fontSize":    { "$value": "{fontSize.sm}" }
+    },
+    "lg": {
+      "paddingX":    { "$value": "{spacing.5}" },
+      "paddingY":    { "$value": "{spacing.3}" },
+      "fontSize":    { "$value": "{fontSize.md}" }
+    },
     "borderRadius":  { "$value": "{radii.md}" },
-    "paddingX":      { "$value": "{spacing.4}" },
-    "paddingY":      { "$value": "{spacing.2}" },
-    "fontSize":      { "$value": "{fontSize.sm}" },
     "fontWeight":    { "$value": "{fontWeight.medium}" },
     "focusRing":     { "$value": "{color.border.focus}" }
   }

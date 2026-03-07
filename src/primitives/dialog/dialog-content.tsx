@@ -69,7 +69,7 @@ export function DialogContent({
   return (
     <div
       ref={(node: HTMLDivElement | null) => {
-        contentRef.current = node;
+        (contentRef as React.MutableRefObject<HTMLElement | null>).current = node;
       }}
       id={contentId}
       role="dialog"

@@ -23,19 +23,20 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
-    "./tokens": {
-      "import": "./dist/tokens/tokens.css"
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.cjs"
     },
-    "./tokens/light": {
-      "import": "./dist/tokens/light.css"
-    },
-    "./tokens/dark": {
-      "import": "./dist/tokens/dark.css"
-    }
+    "./styles": "./dist/styled/index.css",
+    "./styles/button": "./dist/styled/button.css",
+    "./tokens": "./dist/tokens/tokens.css",
+    "./tokens/light": "./dist/tokens/light.css",
+    "./tokens/dark": "./dist/tokens/dark.css"
   },
   "files": [
     "dist",
@@ -49,7 +50,8 @@
   "scripts": {
     "build:tokens": "tsx src/scripts/build-tokens.ts",
     "build:lib": "tsup",
-    "build": "pnpm build:tokens && pnpm build:lib",
+    "build:css": "mkdir -p dist/styled && cp src/styled/*.css dist/styled/",
+    "build": "pnpm build:tokens && pnpm build:lib && pnpm build:css",
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",

@@ -1,0 +1,5 @@
+// Headless primitives — no styles, behavior only.
+// Consumers: import { Button } from 'flintwork/primitives';
+export { Button } from './button/index';
+export { Dialog } from './dialog';
+export { Tabs } from './tabs';
