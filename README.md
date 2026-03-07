@@ -22,6 +22,7 @@ pnpm add flintwork
 ```tsx
 import { Button } from 'flintwork';
 import 'flintwork/tokens';
+import 'flintwork/styles';
 ```
 
 ## Token architecture
