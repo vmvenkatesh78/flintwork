@@ -34,6 +34,8 @@
     },
     "./styles": "./dist/styled/index.css",
     "./styles/button": "./dist/styled/button.css",
+    "./styles/dialog": "./dist/styled/dialog.css",
+    "./styles/tabs": "./dist/styled/tabs.css",
     "./tokens": "./dist/tokens/tokens.css",
     "./tokens/light": "./dist/tokens/light.css",
     "./tokens/dark": "./dist/tokens/dark.css"

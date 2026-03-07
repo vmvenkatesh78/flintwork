@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Flintwork — Styled Tabs
+
+   Option B intermediate variables. Trigger declares structure once,
+   state selectors swap --_ values.
+
+   Requires: dist/tokens/tokens.css loaded first.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   List — tablist container with bottom border
+   -------------------------------------------------------------------------- */
+
+[data-fw-tabs-list] {
+  display: flex;
+  gap: var(--fw-tabs-list-gap);
+  border-bottom: 1px solid var(--fw-tabs-list-borderColor);
+}
+
+/* Vertical orientation — stack triggers, border on right instead */
+[data-fw-tabs-list][aria-orientation="vertical"] {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 1px solid var(--fw-tabs-list-borderColor);
+}
+
+/* --------------------------------------------------------------------------
+   Trigger — individual tab button
+   -------------------------------------------------------------------------- */
+
+[data-fw-tabs-trigger] {
+  --_color: var(--fw-tabs-trigger-color);
+  --_border-color: var(--fw-tabs-trigger-borderColor);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fw-tabs-trigger-paddingY) var(--fw-tabs-trigger-paddingX);
+  font-family: var(--fw-fontFamily-sans);
+  font-size: var(--fw-tabs-trigger-fontSize);
+  font-weight: var(--fw-tabs-trigger-fontWeight);
+  line-height: var(--fw-lineHeight-tight);
+  color: var(--_color);
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--_border-color);
+  margin-bottom: -1px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+/* Vertical orientation — border on right instead of bottom */
+[data-fw-tabs-list][aria-orientation="vertical"] [data-fw-tabs-trigger] {
+  border-bottom: none;
+  border-right: 2px solid var(--_border-color);
+  margin-bottom: 0;
+  margin-right: -1px;
+}
+
+/* --------------------------------------------------------------------------
+   Trigger states — swap only what changes
+   -------------------------------------------------------------------------- */
+
+[data-fw-tabs-trigger]:hover:not([data-disabled]) {
+  --_color: var(--fw-tabs-trigger-colorHover);
+}
+
+[data-fw-tabs-trigger][data-state="active"] {
+  --_color: var(--fw-tabs-trigger-colorActive);
+  --_border-color: var(--fw-tabs-trigger-borderActive);
+}
+
+[data-fw-tabs-trigger][data-disabled] {
+  --_color: var(--fw-tabs-trigger-colorDisabled);
+  cursor: not-allowed;
+}
+
+/* Focus-visible ring — keyboard focus only */
+[data-fw-tabs-trigger]:focus-visible {
+  outline: 2px solid var(--fw-color-border-focus);
+  outline-offset: -2px;
+}
+
+/* --------------------------------------------------------------------------
+   Panel — content area
+   -------------------------------------------------------------------------- */
+
+[data-fw-tabs-panel] {
+  padding: var(--fw-tabs-panel-paddingY) var(--fw-tabs-panel-paddingX);
+}
+
+/* Focus-visible ring when panel itself receives focus (tabindex="0") */
+[data-fw-tabs-panel]:focus-visible {
+  outline: 2px solid var(--fw-color-border-focus);
+  outline-offset: 2px;
+}

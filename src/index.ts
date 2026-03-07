@@ -1,8 +1,5 @@
 // Styled components — the default export.
-// Consumers: import { Button } from 'flintwork';
+// Consumers: import { Button, Dialog, Tabs } from 'flintwork';
 export { Button } from './styled';
-
-// Re-export Dialog and Tabs from primitives until styled wrappers exist.
-// These will move to styled exports in subsequent phases.
-export { Dialog } from './primitives/dialog';
-export { Tabs } from './primitives/tabs';
+export { Dialog } from './styled';
+export { Tabs } from './styled';

@@ -1,0 +1,34 @@
+{
+  "$description": "Dialog component tokens.",
+  "dialog": {
+    "overlay": {
+      "bg": { "$value": "rgba(0, 0, 0, 0.5)" }
+    },
+    "content": {
+      "bg":           { "$value": "{color.bg.primary}" },
+      "border":       { "$value": "{color.border.default}" },
+      "borderRadius": { "$value": "{radii.xl}" },
+      "shadow":       { "$value": "{shadow.xl}" },
+      "paddingX":     { "$value": "{spacing.6}" },
+      "paddingY":     { "$value": "{spacing.6}" }
+    },
+    "content-sm": {
+      "maxWidth": { "$value": "400px" }
+    },
+    "content-md": {
+      "maxWidth": { "$value": "560px" }
+    },
+    "content-lg": {
+      "maxWidth": { "$value": "720px" }
+    },
+    "title": {
+      "fontSize":   { "$value": "{fontSize.lg}" },
+      "fontWeight": { "$value": "{fontWeight.semibold}" },
+      "color":      { "$value": "{color.text.primary}" }
+    },
+    "description": {
+      "fontSize": { "$value": "{fontSize.sm}" },
+      "color":    { "$value": "{color.text.secondary}" }
+    }
+  }
+}
