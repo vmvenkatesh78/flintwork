@@ -1,34 +1,63 @@
 {
-  "$description": "Dialog component tokens.",
   "dialog": {
     "overlay": {
-      "bg": { "$value": "rgba(0, 0, 0, 0.5)" }
-    },
-    "content": {
-      "bg":           { "$value": "{color.bg.primary}" },
-      "border":       { "$value": "{color.border.default}" },
-      "borderRadius": { "$value": "{radii.xl}" },
-      "shadow":       { "$value": "{shadow.xl}" },
-      "paddingX":     { "$value": "{spacing.6}" },
-      "paddingY":     { "$value": "{spacing.6}" }
-    },
-    "content-sm": {
-      "maxWidth": { "$value": "400px" }
-    },
-    "content-md": {
-      "maxWidth": { "$value": "560px" }
-    },
-    "content-lg": {
-      "maxWidth": { "$value": "720px" }
+      "bg": {
+        "$value": "rgba(0, 0, 0, 0.5)"
+      }
     },
     "title": {
-      "fontSize":   { "$value": "{fontSize.lg}" },
-      "fontWeight": { "$value": "{fontWeight.semibold}" },
-      "color":      { "$value": "{color.text.primary}" }
+      "fontWeight": {
+        "$value": "{fontWeight.semibold}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.lg}"
+      },
+      "color": {
+        "$value": "{color.text.primary}"
+      }
+    },
+    "content-lg": {
+      "maxWidth": {
+        "$value": "720px"
+      }
     },
     "description": {
-      "fontSize": { "$value": "{fontSize.sm}" },
-      "color":    { "$value": "{color.text.secondary}" }
+      "color": {
+        "$value": "{color.text.secondary}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.sm}"
+      }
+    },
+    "content": {
+      "bg": {
+        "$value": "{color.bg.primary}"
+      },
+      "paddingX": {
+        "$value": "{spacing.6}"
+      },
+      "borderRadius": {
+        "$value": "{radii.xl}"
+      },
+      "border": {
+        "$value": "{color.border.default}"
+      },
+      "paddingY": {
+        "$value": "{spacing.6}"
+      },
+      "shadow": {
+        "$value": "{shadow.xl}"
+      }
+    },
+    "content-sm": {
+      "maxWidth": {
+        "$value": "400px"
+      }
+    },
+    "content-md": {
+      "maxWidth": {
+        "$value": "560px"
+      }
     }
   }
 }

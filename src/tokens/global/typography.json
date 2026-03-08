@@ -1,32 +1,69 @@
 {
-  "$description": "Global typography primitives — font families, sizes, weights, and line heights.",
-  "fontFamily": {
-    "$type": "fontFamily",
-    "sans": { "$value": ["Inter", "system-ui", "sans-serif"] },
-    "mono": { "$value": ["JetBrains Mono", "Fira Code", "monospace"] }
-  },
   "fontSize": {
-    "$type": "dimension",
-    "xs":   { "$value": "12px" },
-    "sm":   { "$value": "14px" },
-    "md":   { "$value": "16px" },
-    "lg":   { "$value": "18px" },
-    "xl":   { "$value": "20px" },
-    "2xl":  { "$value": "24px" },
-    "3xl":  { "$value": "30px" },
-    "4xl":  { "$value": "36px" }
+    "3xl": {
+      "$value": "30px"
+    },
+    "md": {
+      "$value": "16px"
+    },
+    "xs": {
+      "$value": "12px"
+    },
+    "sm": {
+      "$value": "14px"
+    },
+    "2xl": {
+      "$value": "24px"
+    },
+    "lg": {
+      "$value": "18px"
+    },
+    "xl": {
+      "$value": "20px"
+    },
+    "4xl": {
+      "$value": "36px"
+    }
+  },
+  "fontFamily": {
+    "sans": {
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "mono": {
+      "$value": [
+        "JetBrains Mono",
+        "Fira Code",
+        "monospace"
+      ]
+    }
   },
   "fontWeight": {
-    "$type": "fontWeight",
-    "regular":  { "$value": 400 },
-    "medium":   { "$value": 500 },
-    "semibold": { "$value": 600 },
-    "bold":     { "$value": 700 }
+    "semibold": {
+      "$value": 600
+    },
+    "regular": {
+      "$value": 400
+    },
+    "bold": {
+      "$value": 700
+    },
+    "medium": {
+      "$value": 500
+    }
   },
   "lineHeight": {
-    "$type": "dimension",
-    "tight":  { "$value": "1.25" },
-    "normal": { "$value": "1.5" },
-    "loose":  { "$value": "1.75" }
+    "tight": {
+      "$value": "1.25"
+    },
+    "loose": {
+      "$value": "1.75"
+    },
+    "normal": {
+      "$value": "1.5"
+    }
   }
 }

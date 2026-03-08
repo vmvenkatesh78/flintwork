@@ -1,25 +1,52 @@
 {
-  "$description": "Tabs component tokens.",
   "tabs": {
-    "list": {
-      "borderColor": { "$value": "{color.border.default}" },
-      "gap":         { "$value": "{spacing.0}" }
-    },
     "trigger": {
-      "paddingX":       { "$value": "{spacing.4}" },
-      "paddingY":       { "$value": "{spacing.2}" },
-      "fontSize":       { "$value": "{fontSize.sm}" },
-      "fontWeight":     { "$value": "{fontWeight.medium}" },
-      "color":          { "$value": "{color.text.secondary}" },
-      "colorActive":    { "$value": "{color.text.primary}" },
-      "colorHover":     { "$value": "{color.text.primary}" },
-      "colorDisabled":  { "$value": "{color.text.disabled}" },
-      "borderColor":    { "$value": "transparent" },
-      "borderActive":   { "$value": "{color.interactive.default}" }
+      "color": {
+        "$value": "{color.text.secondary}"
+      },
+      "fontWeight": {
+        "$value": "{fontWeight.medium}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.sm}"
+      },
+      "borderColor": {
+        "$value": "transparent"
+      },
+      "paddingX": {
+        "$value": "{spacing.4}"
+      },
+      "colorHover": {
+        "$value": "{color.text.primary}"
+      },
+      "paddingY": {
+        "$value": "{spacing.2}"
+      },
+      "colorDisabled": {
+        "$value": "{color.text.disabled}"
+      },
+      "colorActive": {
+        "$value": "{color.text.primary}"
+      },
+      "borderActive": {
+        "$value": "{color.interactive.default}"
+      }
+    },
+    "list": {
+      "borderColor": {
+        "$value": "{color.border.default}"
+      },
+      "gap": {
+        "$value": "{spacing.0}"
+      }
     },
     "panel": {
-      "paddingX": { "$value": "{spacing.4}" },
-      "paddingY": { "$value": "{spacing.4}" }
+      "paddingY": {
+        "$value": "{spacing.4}"
+      },
+      "paddingX": {
+        "$value": "{spacing.4}"
+      }
     }
   }
 }

@@ -1,56 +1,125 @@
 {
-  "$description": "Button component tokens — every style value references a semantic token. The button never touches global primitives directly.",
   "button": {
-    "primary": {
-      "bg":          { "$value": "{color.interactive.default}" },
-      "bgHover":     { "$value": "{color.interactive.hover}" },
-      "bgActive":    { "$value": "{color.interactive.active}" },
-      "text":        { "$value": "{color.text.inverse}" },
-      "border":      { "$value": "transparent" }
-    },
-    "secondary": {
-      "bg":          { "$value": "transparent" },
-      "bgHover":     { "$value": "{color.bg.hover}" },
-      "bgActive":    { "$value": "{color.bg.active}" },
-      "text":        { "$value": "{color.text.primary}" },
-      "border":      { "$value": "{color.border.default}" }
+    "fontWeight": {
+      "$value": "{fontWeight.medium}"
     },
     "danger": {
-      "bg":          { "$value": "{color.red.500}" },
-      "bgHover":     { "$value": "{color.red.600}" },
-      "bgActive":    { "$value": "{color.red.700}" },
-      "text":        { "$value": "{color.text.inverse}" },
-      "border":      { "$value": "transparent" }
+      "bgActive": {
+        "$value": "{color.red.700}"
+      },
+      "bgHover": {
+        "$value": "{color.red.600}"
+      },
+      "bg": {
+        "$value": "{color.red.500}"
+      },
+      "border": {
+        "$value": "transparent"
+      },
+      "text": {
+        "$value": "{color.text.inverse}"
+      }
+    },
+    "secondary": {
+      "bgHover": {
+        "$value": "{color.bg.hover}"
+      },
+      "bgActive": {
+        "$value": "{color.bg.active}"
+      },
+      "text": {
+        "$value": "{color.text.primary}"
+      },
+      "bg": {
+        "$value": "transparent"
+      },
+      "border": {
+        "$value": "{color.border.default}"
+      }
+    },
+    "primary": {
+      "text": {
+        "$value": "{color.text.inverse}"
+      },
+      "bg": {
+        "$value": "{color.interactive.default}"
+      },
+      "bgHover": {
+        "$value": "{color.interactive.hover}"
+      },
+      "bgActive": {
+        "$value": "{color.interactive.active}"
+      },
+      "border": {
+        "$value": "transparent"
+      }
     },
     "ghost": {
-      "bg":          { "$value": "transparent" },
-      "bgHover":     { "$value": "{color.bg.hover}" },
-      "bgActive":    { "$value": "{color.bg.active}" },
-      "text":        { "$value": "{color.interactive.default}" },
-      "border":      { "$value": "transparent" }
-    },
-    "disabled": {
-      "bg":          { "$value": "{color.bg.disabled}" },
-      "text":        { "$value": "{color.text.disabled}" },
-      "border":      { "$value": "{color.border.disabled}" }
-    },
-    "sm": {
-      "paddingX":    { "$value": "{spacing.3}" },
-      "paddingY":    { "$value": "{spacing.1}" },
-      "fontSize":    { "$value": "{fontSize.xs}" }
-    },
-    "md": {
-      "paddingX":    { "$value": "{spacing.4}" },
-      "paddingY":    { "$value": "{spacing.2}" },
-      "fontSize":    { "$value": "{fontSize.sm}" }
+      "bgActive": {
+        "$value": "{color.bg.active}"
+      },
+      "text": {
+        "$value": "{color.interactive.default}"
+      },
+      "bgHover": {
+        "$value": "{color.bg.hover}"
+      },
+      "bg": {
+        "$value": "transparent"
+      },
+      "border": {
+        "$value": "transparent"
+      }
     },
     "lg": {
-      "paddingX":    { "$value": "{spacing.5}" },
-      "paddingY":    { "$value": "{spacing.3}" },
-      "fontSize":    { "$value": "{fontSize.md}" }
+      "paddingY": {
+        "$value": "{spacing.3}"
+      },
+      "paddingX": {
+        "$value": "{spacing.5}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.md}"
+      }
     },
-    "borderRadius":  { "$value": "{radii.md}" },
-    "fontWeight":    { "$value": "{fontWeight.medium}" },
-    "focusRing":     { "$value": "{color.border.focus}" }
+    "disabled": {
+      "text": {
+        "$value": "{color.text.disabled}"
+      },
+      "bg": {
+        "$value": "{color.bg.disabled}"
+      },
+      "border": {
+        "$value": "{color.border.disabled}"
+      }
+    },
+    "focusRing": {
+      "$value": "{color.border.focus}"
+    },
+    "sm": {
+      "fontSize": {
+        "$value": "{fontSize.xs}"
+      },
+      "paddingX": {
+        "$value": "{spacing.3}"
+      },
+      "paddingY": {
+        "$value": "{spacing.1}"
+      }
+    },
+    "md": {
+      "paddingX": {
+        "$value": "{spacing.4}"
+      },
+      "paddingY": {
+        "$value": "{spacing.2}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.sm}"
+      }
+    },
+    "borderRadius": {
+      "$value": "{radii.md}"
+    }
   }
 }

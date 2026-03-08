@@ -1,48 +1,102 @@
 {
-  "$description": "Semantic color tokens — dark theme. Same token names as light, remapped to different global values. This is how theme switching works — swap the semantic layer, everything updates.",
   "color": {
-    "$type": "color",
-
-    "text": {
-      "primary":     { "$value": "{color.gray.50}" },
-      "secondary":   { "$value": "{color.gray.400}" },
-      "tertiary":    { "$value": "{color.gray.500}" },
-      "disabled":    { "$value": "{color.gray.600}" },
-      "inverse":     { "$value": "{color.gray.900}" },
-      "error":       { "$value": "{color.red.400}" },
-      "success":     { "$value": "{color.green.400}" },
-      "warning":     { "$value": "{color.orange.400}" },
-      "brand":       { "$value": "{color.blue.400}" }
-    },
-
     "bg": {
-      "primary":     { "$value": "{color.gray.900}" },
-      "secondary":   { "$value": "{color.gray.800}" },
-      "tertiary":    { "$value": "{color.gray.700}" },
-      "disabled":    { "$value": "{color.gray.800}" },
-      "inverse":     { "$value": "{color.gray.50}" },
-      "brand":       { "$value": "{color.blue.500}" },
-      "error":       { "$value": "{color.red.900}" },
-      "success":     { "$value": "{color.green.900}" },
-      "warning":     { "$value": "{color.orange.900}" },
-      "hover":       { "$value": "{color.gray.800}" },
-      "active":      { "$value": "{color.gray.700}" }
+      "error": {
+        "$value": "{color.red.900}"
+      },
+      "brand": {
+        "$value": "{color.blue.500}"
+      },
+      "active": {
+        "$value": "{color.gray.700}"
+      },
+      "secondary": {
+        "$value": "{color.gray.800}"
+      },
+      "hover": {
+        "$value": "{color.gray.800}"
+      },
+      "inverse": {
+        "$value": "{color.gray.50}"
+      },
+      "success": {
+        "$value": "{color.green.900}"
+      },
+      "warning": {
+        "$value": "{color.orange.900}"
+      },
+      "primary": {
+        "$value": "{color.gray.900}"
+      },
+      "disabled": {
+        "$value": "{color.gray.800}"
+      },
+      "tertiary": {
+        "$value": "{color.gray.700}"
+      }
     },
-
-    "border": {
-      "default":     { "$value": "{color.gray.700}" },
-      "strong":      { "$value": "{color.gray.600}" },
-      "disabled":    { "$value": "{color.gray.700}" },
-      "error":       { "$value": "{color.red.400}" },
-      "focus":       { "$value": "{color.blue.400}" },
-      "brand":       { "$value": "{color.blue.400}" }
-    },
-
     "interactive": {
-      "default":     { "$value": "{color.blue.400}" },
-      "hover":       { "$value": "{color.blue.300}" },
-      "active":      { "$value": "{color.blue.200}" },
-      "disabled":    { "$value": "{color.gray.600}" }
+      "hover": {
+        "$value": "{color.blue.300}"
+      },
+      "disabled": {
+        "$value": "{color.gray.600}"
+      },
+      "default": {
+        "$value": "{color.blue.400}"
+      },
+      "active": {
+        "$value": "{color.blue.200}"
+      }
+    },
+    "text": {
+      "error": {
+        "$value": "{color.red.400}"
+      },
+      "tertiary": {
+        "$value": "{color.gray.500}"
+      },
+      "secondary": {
+        "$value": "{color.gray.400}"
+      },
+      "warning": {
+        "$value": "{color.orange.400}"
+      },
+      "inverse": {
+        "$value": "{color.gray.900}"
+      },
+      "primary": {
+        "$value": "{color.gray.50}"
+      },
+      "disabled": {
+        "$value": "{color.gray.600}"
+      },
+      "brand": {
+        "$value": "{color.blue.400}"
+      },
+      "success": {
+        "$value": "{color.green.400}"
+      }
+    },
+    "border": {
+      "strong": {
+        "$value": "{color.gray.600}"
+      },
+      "focus": {
+        "$value": "{color.blue.400}"
+      },
+      "default": {
+        "$value": "{color.gray.700}"
+      },
+      "error": {
+        "$value": "{color.red.400}"
+      },
+      "disabled": {
+        "$value": "{color.gray.700}"
+      },
+      "brand": {
+        "$value": "{color.blue.400}"
+      }
     }
   }
 }

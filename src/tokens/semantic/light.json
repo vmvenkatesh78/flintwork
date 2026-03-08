@@ -1,48 +1,102 @@
 {
-  "$description": "Semantic color tokens — light theme. These define WHAT values are used FOR, not what they are. Every reference resolves to a global token.",
   "color": {
-    "$type": "color",
-
-    "text": {
-      "primary":     { "$value": "{color.gray.900}" },
-      "secondary":   { "$value": "{color.gray.500}" },
-      "tertiary":    { "$value": "{color.gray.400}" },
-      "disabled":    { "$value": "{color.gray.300}" },
-      "inverse":     { "$value": "{color.white}" },
-      "error":       { "$value": "{color.red.500}" },
-      "success":     { "$value": "{color.green.500}" },
-      "warning":     { "$value": "{color.orange.500}" },
-      "brand":       { "$value": "{color.blue.500}" }
-    },
-
-    "bg": {
-      "primary":     { "$value": "{color.white}" },
-      "secondary":   { "$value": "{color.gray.50}" },
-      "tertiary":    { "$value": "{color.gray.100}" },
-      "disabled":    { "$value": "{color.gray.100}" },
-      "inverse":     { "$value": "{color.gray.900}" },
-      "brand":       { "$value": "{color.blue.500}" },
-      "error":       { "$value": "{color.red.50}" },
-      "success":     { "$value": "{color.green.50}" },
-      "warning":     { "$value": "{color.orange.50}" },
-      "hover":       { "$value": "{color.gray.50}" },
-      "active":      { "$value": "{color.gray.100}" }
-    },
-
-    "border": {
-      "default":     { "$value": "{color.gray.200}" },
-      "strong":      { "$value": "{color.gray.300}" },
-      "disabled":    { "$value": "{color.gray.200}" },
-      "error":       { "$value": "{color.red.500}" },
-      "focus":       { "$value": "{color.blue.500}" },
-      "brand":       { "$value": "{color.blue.500}" }
-    },
-
     "interactive": {
-      "default":     { "$value": "{color.blue.500}" },
-      "hover":       { "$value": "{color.blue.600}" },
-      "active":      { "$value": "{color.blue.700}" },
-      "disabled":    { "$value": "{color.gray.300}" }
+      "default": {
+        "$value": "{color.blue.600}"
+      },
+      "active": {
+        "$value": "{color.blue.700}"
+      },
+      "hover": {
+        "$value": "{color.blue.600}"
+      },
+      "disabled": {
+        "$value": "{color.gray.300}"
+      }
+    },
+    "text": {
+      "secondary": {
+        "$value": "{color.gray.500}"
+      },
+      "primary": {
+        "$value": "{color.gray.900}"
+      },
+      "error": {
+        "$value": "{color.red.500}"
+      },
+      "brand": {
+        "$value": "{color.blue.500}"
+      },
+      "tertiary": {
+        "$value": "{color.gray.400}"
+      },
+      "success": {
+        "$value": "{color.green.500}"
+      },
+      "disabled": {
+        "$value": "{color.gray.300}"
+      },
+      "warning": {
+        "$value": "{color.orange.500}"
+      },
+      "inverse": {
+        "$value": "{color.white}"
+      }
+    },
+    "bg": {
+      "primary": {
+        "$value": "{color.white}"
+      },
+      "active": {
+        "$value": "{color.gray.100}"
+      },
+      "error": {
+        "$value": "{color.red.50}"
+      },
+      "inverse": {
+        "$value": "{color.gray.900}"
+      },
+      "brand": {
+        "$value": "{color.blue.500}"
+      },
+      "disabled": {
+        "$value": "{color.gray.100}"
+      },
+      "hover": {
+        "$value": "{color.gray.50}"
+      },
+      "tertiary": {
+        "$value": "{color.gray.100}"
+      },
+      "success": {
+        "$value": "{color.green.50}"
+      },
+      "secondary": {
+        "$value": "{color.gray.50}"
+      },
+      "warning": {
+        "$value": "{color.orange.50}"
+      }
+    },
+    "border": {
+      "error": {
+        "$value": "{color.red.500}"
+      },
+      "disabled": {
+        "$value": "{color.gray.200}"
+      },
+      "strong": {
+        "$value": "{color.gray.300}"
+      },
+      "default": {
+        "$value": "{color.gray.200}"
+      },
+      "brand": {
+        "$value": "{color.blue.500}"
+      },
+      "focus": {
+        "$value": "{color.blue.500}"
+      }
     }
   }
 }

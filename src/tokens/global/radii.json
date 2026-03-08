@@ -1,13 +1,25 @@
 {
-  "$description": "Global border radius values.",
   "radii": {
-    "$type": "dimension",
-    "none": { "$value": "0px" },
-    "sm":   { "$value": "4px" },
-    "md":   { "$value": "6px" },
-    "lg":   { "$value": "8px" },
-    "xl":   { "$value": "12px" },
-    "2xl":  { "$value": "16px" },
-    "full": { "$value": "9999px" }
+    "none": {
+      "$value": "0px"
+    },
+    "full": {
+      "$value": "9999px"
+    },
+    "md": {
+      "$value": "6px"
+    },
+    "sm": {
+      "$value": "4px"
+    },
+    "xl": {
+      "$value": "12px"
+    },
+    "2xl": {
+      "$value": "16px"
+    },
+    "lg": {
+      "$value": "8px"
+    }
   }
 }
