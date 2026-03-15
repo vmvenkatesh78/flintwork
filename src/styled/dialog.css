@@ -15,7 +15,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--fw-dialog-overlay-bg);
-  z-index: 50;
+  z-index: var(--fw-zIndex-overlay);
 }
 
 /* --------------------------------------------------------------------------
@@ -29,7 +29,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 51;
+  z-index: var(--fw-zIndex-modal);
   width: 90vw;
   max-width: var(--_max-width);
   max-height: 85vh;

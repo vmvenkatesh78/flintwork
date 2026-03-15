@@ -31,7 +31,7 @@
         "$value": "{color.text.primary}"
       },
       "bg": {
-        "$value": "transparent"
+        "$value": "{color.bg.primary}"
       },
       "border": {
         "$value": "{color.border.default}"

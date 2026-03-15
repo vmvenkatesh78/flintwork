@@ -97,6 +97,14 @@
       "brand": {
         "$value": "{color.blue.400}"
       }
+    },
+    "selection": {
+      "bg": {
+        "$value": "{color.blue.800}"
+      },
+      "text": {
+        "$value": "{color.blue.100}"
+      }
     }
   }
 }

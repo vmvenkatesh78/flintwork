@@ -15,9 +15,6 @@
     "xl": {
       "$value": "12px"
     },
-    "2xl": {
-      "$value": "16px"
-    },
     "lg": {
       "$value": "8px"
     }

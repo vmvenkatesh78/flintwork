@@ -2,7 +2,7 @@
   "dialog": {
     "overlay": {
       "bg": {
-        "$value": "rgba(0, 0, 0, 0.5)"
+        "$value": "rgba(16, 24, 40, 0.5)"
       }
     },
     "title": {

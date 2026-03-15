@@ -2,10 +2,10 @@
   "color": {
     "interactive": {
       "default": {
-        "$value": "{color.blue.600}"
+        "$value": "{color.blue.500}"
       },
       "active": {
-        "$value": "{color.blue.700}"
+        "$value": "{color.blue.500}"
       },
       "hover": {
         "$value": "{color.blue.600}"
@@ -92,10 +92,18 @@
         "$value": "{color.gray.200}"
       },
       "brand": {
-        "$value": "{color.blue.500}"
+        "$value": "{color.blue.600}"
       },
       "focus": {
         "$value": "{color.blue.500}"
+      }
+    },
+    "selection": {
+      "bg": {
+        "$value": "{color.blue.100}"
+      },
+      "text": {
+        "$value": "{color.blue.900}"
       }
     }
   }
