@@ -1,100 +1,88 @@
 {
   "button": {
-    "fontWeight": {
-      "$value": "{fontWeight.medium}"
+    "md": {
+      "paddingY": {
+        "$value": "{spacing.2}"
+      },
+      "fontSize": {
+        "$value": "{fontSize.sm}"
+      },
+      "paddingX": {
+        "$value": "{spacing.4}"
+      }
     },
-    "danger": {
-      "bgActive": {
-        "$value": "{color.red.700}"
-      },
-      "bgHover": {
-        "$value": "{color.red.600}"
-      },
+    "primary": {
       "bg": {
-        "$value": "{color.red.500}"
+        "$value": "{color.interactive.default}"
       },
       "border": {
         "$value": "transparent"
       },
+      "bgActive": {
+        "$value": "{color.interactive.active}"
+      },
+      "bgHover": {
+        "$value": "{color.interactive.hover}"
+      },
       "text": {
         "$value": "{color.text.inverse}"
+      }
+    },
+    "ghost": {
+      "bg": {
+        "$value": "transparent"
+      },
+      "bgHover": {
+        "$value": "{color.bg.hover}"
+      },
+      "text": {
+        "$value": "{color.interactive.default}"
+      },
+      "border": {
+        "$value": "transparent"
+      },
+      "bgActive": {
+        "$value": "{color.bg.active}"
       }
     },
     "secondary": {
       "bgHover": {
         "$value": "{color.bg.hover}"
       },
+      "border": {
+        "$value": "{color.border.default}"
+      },
       "bgActive": {
         "$value": "{color.bg.active}"
-      },
-      "text": {
-        "$value": "{color.text.primary}"
       },
       "bg": {
         "$value": "{color.bg.primary}"
       },
-      "border": {
-        "$value": "{color.border.default}"
-      }
-    },
-    "primary": {
       "text": {
-        "$value": "{color.text.inverse}"
-      },
-      "bg": {
-        "$value": "{color.interactive.default}"
-      },
-      "bgHover": {
-        "$value": "{color.interactive.hover}"
-      },
-      "bgActive": {
-        "$value": "{color.interactive.active}"
-      },
-      "border": {
-        "$value": "transparent"
-      }
-    },
-    "ghost": {
-      "bgActive": {
-        "$value": "{color.bg.active}"
-      },
-      "text": {
-        "$value": "{color.interactive.default}"
-      },
-      "bgHover": {
-        "$value": "{color.bg.hover}"
-      },
-      "bg": {
-        "$value": "transparent"
-      },
-      "border": {
-        "$value": "transparent"
+        "$value": "{color.text.primary}"
       }
     },
     "lg": {
       "paddingY": {
         "$value": "{spacing.3}"
       },
-      "paddingX": {
-        "$value": "{spacing.5}"
-      },
       "fontSize": {
         "$value": "{fontSize.md}"
+      },
+      "paddingX": {
+        "$value": "{spacing.5}"
       }
     },
     "disabled": {
-      "text": {
-        "$value": "{color.text.disabled}"
+      "border": {
+        "$value": "{color.border.disabled}"
       },
       "bg": {
         "$value": "{color.bg.disabled}"
       },
-      "border": {
-        "$value": "{color.border.disabled}"
+      "text": {
+        "$value": "{color.text.disabled}"
       }
-    },
-    "focusRing": {
-      "$value": "{color.border.focus}"
     },
     "sm": {
       "fontSize": {
@@ -107,19 +95,31 @@
         "$value": "{spacing.1}"
       }
     },
-    "md": {
-      "paddingX": {
-        "$value": "{spacing.4}"
+    "danger": {
+      "bg": {
+        "$value": "{color.red.500}"
       },
-      "paddingY": {
-        "$value": "{spacing.2}"
+      "bgActive": {
+        "$value": "{color.red.700}"
       },
-      "fontSize": {
-        "$value": "{fontSize.sm}"
+      "text": {
+        "$value": "{color.text.inverse}"
+      },
+      "border": {
+        "$value": "transparent"
+      },
+      "bgHover": {
+        "$value": "{color.red.600}"
       }
     },
     "borderRadius": {
       "$value": "{radii.md}"
+    },
+    "fontWeight": {
+      "$value": "{fontWeight.medium}"
+    },
+    "focusRing": {
+      "$value": "{color.border.focus}"
     }
   }
 }

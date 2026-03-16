@@ -1,25 +1,25 @@
 {
   "zIndex": {
-    "base": {
-      "$value": "0"
-    },
     "dropdown": {
       "$value": "100"
-    },
-    "sticky": {
-      "$value": "200"
-    },
-    "overlay": {
-      "$value": "300"
     },
     "modal": {
       "$value": "400"
     },
+    "sticky": {
+      "$value": "200"
+    },
     "popover": {
       "$value": "500"
     },
+    "overlay": {
+      "$value": "300"
+    },
     "tooltip": {
       "$value": "600"
+    },
+    "base": {
+      "$value": "0"
     },
     "toast": {
       "$value": "700"

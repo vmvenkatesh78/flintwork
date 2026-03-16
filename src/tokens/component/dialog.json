@@ -1,19 +1,44 @@
 {
   "dialog": {
-    "overlay": {
+    "content": {
+      "paddingY": {
+        "$value": "{spacing.6}"
+      },
+      "shadow": {
+        "$value": "{shadow.xl}"
+      },
       "bg": {
-        "$value": "rgba(16, 24, 40, 0.5)"
+        "$value": "{color.bg.primary}"
+      },
+      "border": {
+        "$value": "{color.border.default}"
+      },
+      "paddingX": {
+        "$value": "{spacing.6}"
+      },
+      "borderRadius": {
+        "$value": "{radii.xl}"
       }
     },
     "title": {
-      "fontWeight": {
-        "$value": "{fontWeight.semibold}"
-      },
       "fontSize": {
         "$value": "{fontSize.lg}"
       },
+      "fontWeight": {
+        "$value": "{fontWeight.semibold}"
+      },
       "color": {
         "$value": "{color.text.primary}"
+      }
+    },
+    "content-sm": {
+      "maxWidth": {
+        "$value": "400px"
+      }
+    },
+    "overlay": {
+      "bg": {
+        "$value": "rgba(16, 24, 40, 0.5)"
       }
     },
     "content-lg": {
@@ -27,31 +52,6 @@
       },
       "fontSize": {
         "$value": "{fontSize.sm}"
-      }
-    },
-    "content": {
-      "bg": {
-        "$value": "{color.bg.primary}"
-      },
-      "paddingX": {
-        "$value": "{spacing.6}"
-      },
-      "borderRadius": {
-        "$value": "{radii.xl}"
-      },
-      "border": {
-        "$value": "{color.border.default}"
-      },
-      "paddingY": {
-        "$value": "{spacing.6}"
-      },
-      "shadow": {
-        "$value": "{shadow.xl}"
-      }
-    },
-    "content-sm": {
-      "maxWidth": {
-        "$value": "400px"
       }
     },
     "content-md": {
