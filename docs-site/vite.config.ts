@@ -9,7 +9,6 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
       'flintwork/primitives': resolve(__dirname, '../src/primitives/index.ts'),
       'flintwork': resolve(__dirname, '../src/index.ts'),
-      'flintwork-dist': resolve(__dirname, '../dist'),
     },
   },
 });

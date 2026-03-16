@@ -3,9 +3,10 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+   "scripts": {
+    "prebuild": "mkdir -p src/styles/tokens src/styles/styled && cp ../dist/tokens/tokens.css src/styles/tokens/ && cp ../dist/styled/*.css src/styles/styled/",
+    "dev": "pnpm prebuild && vite",
+    "build": "pnpm prebuild && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

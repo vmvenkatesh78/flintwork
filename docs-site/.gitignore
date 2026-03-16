@@ -1,3 +1,4 @@
 node_modules
 dist
-flintwork-dist
+src/styles/tokens/
+src/styles/styled/
