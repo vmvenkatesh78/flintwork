@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Button, Dialog, Tabs } from 'flintwork';
+import { Button, Dialog, Tabs, Tooltip, Accordion, Popover, Menu, Select } from 'flintwork';
 
 export function Home() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [menuAction, setMenuAction] = useState('');
 
   return (
     <>
@@ -17,7 +18,7 @@ export function Home() {
       <div className="demo-section">
         <h2>Kitchen Sink</h2>
         <p style={{ marginBottom: 'var(--fw-spacing-4)' }}>
-          Every component rendered together. Toggle the theme to see all tokens update simultaneously.
+          All 8 components rendered together. Toggle the theme to see every token update simultaneously.
         </p>
 
         <div className="demo-panel">
@@ -83,6 +84,107 @@ export function Home() {
                 </Tabs.Panel>
               </Tabs>
             </div>
+
+            <div>
+              <h3>Tooltip</h3>
+              <div style={{ display: 'flex', gap: 'var(--fw-spacing-3)' }}>
+                <Tooltip>
+                  <Tooltip.Trigger>
+                    <Button variant="secondary">Hover me</Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Portal>
+                    <Tooltip.Content>Shows after 700ms on hover, instantly on focus</Tooltip.Content>
+                  </Tooltip.Portal>
+                </Tooltip>
+                <Tooltip>
+                  <Tooltip.Trigger>
+                    <Button variant="secondary">Or focus me</Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Portal>
+                    <Tooltip.Content>Press Escape to dismiss without moving focus</Tooltip.Content>
+                  </Tooltip.Portal>
+                </Tooltip>
+              </div>
+            </div>
+
+            <div>
+              <h3>Accordion</h3>
+              <Accordion type="single" defaultValue="acc-1">
+                <Accordion.Item value="acc-1">
+                  <Accordion.Trigger>First section</Accordion.Trigger>
+                  <Accordion.Content>Content for the first section. Click another header to switch.</Accordion.Content>
+                </Accordion.Item>
+                <Accordion.Item value="acc-2">
+                  <Accordion.Trigger>Second section</Accordion.Trigger>
+                  <Accordion.Content>Content for the second section.</Accordion.Content>
+                </Accordion.Item>
+                <Accordion.Item value="acc-3">
+                  <Accordion.Trigger>Third section</Accordion.Trigger>
+                  <Accordion.Content>Content for the third section.</Accordion.Content>
+                </Accordion.Item>
+              </Accordion>
+            </div>
+
+            <div>
+              <h3>Popover</h3>
+              <Popover>
+                <Popover.Trigger>
+                  <Button variant="secondary">Open Popover</Button>
+                </Popover.Trigger>
+                <Popover.Portal>
+                  <Popover.Content style={{ padding: 'var(--fw-spacing-4)', minWidth: 200 }}>
+                    <p style={{ marginBottom: 'var(--fw-spacing-3)', fontSize: 'var(--fw-fontSize-sm)' }}>
+                      Non-modal popup with interactive content. Focus is trapped.
+                    </p>
+                    <Popover.Close>
+                      <Button variant="primary" size="sm">Done</Button>
+                    </Popover.Close>
+                  </Popover.Content>
+                </Popover.Portal>
+              </Popover>
+            </div>
+
+            <div>
+              <h3>Menu</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--fw-spacing-3)' }}>
+                <Menu>
+                  <Menu.Trigger>
+                    <Button variant="secondary">Actions</Button>
+                  </Menu.Trigger>
+                  <Menu.Portal>
+                    <Menu.Content>
+                      <Menu.Item onSelect={() => setMenuAction('Edit')}>Edit</Menu.Item>
+                      <Menu.Item onSelect={() => setMenuAction('Duplicate')}>Duplicate</Menu.Item>
+                      <Menu.Item onSelect={() => setMenuAction('Archive')}>Archive</Menu.Item>
+                      <Menu.Item disabled>Delete</Menu.Item>
+                    </Menu.Content>
+                  </Menu.Portal>
+                </Menu>
+                {menuAction && (
+                  <span style={{ fontSize: 'var(--fw-fontSize-xs)', color: 'var(--fw-color-text-tertiary)' }}>
+                    Last: {menuAction}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <h3>Select</h3>
+              <Select defaultValue="react">
+                <Select.Trigger>
+                  <Select.Value placeholder="Choose framework" />
+                </Select.Trigger>
+                <Select.Portal>
+                  <Select.Content>
+                    <Select.Item value="react">React</Select.Item>
+                    <Select.Item value="vue">Vue</Select.Item>
+                    <Select.Item value="svelte">Svelte</Select.Item>
+                    <Select.Item value="angular" disabled>Angular</Select.Item>
+                  </Select.Content>
+                </Select.Portal>
+              </Select>
+            </div>
+
           </div>
         </div>
       </div>

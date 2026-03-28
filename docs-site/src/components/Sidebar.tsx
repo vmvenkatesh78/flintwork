@@ -12,9 +12,14 @@ const NAV_SECTIONS = [
   {
     label: 'Components',
     links: [
+      { to: '/components/accordion', label: 'Accordion' },
       { to: '/components/button', label: 'Button' },
       { to: '/components/dialog', label: 'Dialog' },
+      { to: '/components/menu', label: 'Menu' },
+      { to: '/components/popover', label: 'Popover' },
+      { to: '/components/select', label: 'Select' },
       { to: '/components/tabs', label: 'Tabs' },
+      { to: '/components/tooltip', label: 'Tooltip' },
     ],
   },
 ] as const;
@@ -25,7 +30,7 @@ export function Sidebar() {
   return (
     <nav className="docs-sidebar">
       <div className="sidebar-logo">
-        flintwork <span>v0.0.1</span>
+        flintwork <span>v0.1.0</span>
       </div>
 
       {NAV_SECTIONS.map((section) => (
