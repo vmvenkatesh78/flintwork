@@ -1,0 +1,43 @@
+/* Popover — Token-driven styles
+ *
+ * Targets [data-fw-popover-content] added by the styled wrapper.
+ * Option B architecture: --_ intermediate variables.
+ */
+
+[data-fw-popover-content] {
+  --_bg: var(--fw-popover-bg);
+  --_border-color: var(--fw-popover-border-color);
+  --_radius: var(--fw-popover-radius);
+  --_shadow: var(--fw-popover-shadow);
+  --_padding: var(--fw-popover-padding);
+  --_max-width: var(--fw-popover-max-width);
+  --_z-index: var(--fw-popover-z-index);
+
+  position: fixed;
+  z-index: var(--_z-index);
+  max-width: var(--_max-width);
+  padding: var(--_padding);
+  background: var(--_bg);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
+  box-shadow: var(--_shadow);
+
+  animation: fw-popover-in 150ms ease-out;
+}
+
+@keyframes fw-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fw-popover-content] {
+    animation: none;
+  }
+}

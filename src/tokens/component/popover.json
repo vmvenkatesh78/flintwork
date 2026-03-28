@@ -1,0 +1,11 @@
+{
+  "popover": {
+    "bg": "{color.bg.primary}",
+    "border-color": "{color.border.default}",
+    "radius": "{radii.lg}",
+    "shadow": "{shadow.lg}",
+    "padding": "{spacing.4}",
+    "max-width": "320px",
+    "z-index": "{z-index.popover}"
+  }
+}
