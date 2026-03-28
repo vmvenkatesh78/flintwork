@@ -422,6 +422,60 @@ These are explicitly documented in `use-focus-trap.ts` as known limitations:
 
 ---
 
+## Accordion
+
+### Disclosure pattern with heading structure
+
+**Pattern:** Each accordion trigger must be inside a heading element containing a button. The heading provides document structure. The button provides the interactive toggle.
+
+**Implementation:** `AccordionTrigger` renders `<h3><button>...</button></h3>`. The heading level is h3 by default (accordion sections are typically sub-sections). Button uses native click/Enter/Space behavior, no custom keyboard handler needed.
+
+**Design decision:** Hardcoding h3 is opinionated. Some consumers may need h2 or h4 depending on their page structure. A `headingLevel` prop or `asChild` pattern can be added in v2. For v1, h3 covers the most common case and avoids API complexity.
+
+**Verifiable assertion:** Trigger button must be a descendant of a heading element (h2-h6). Button must have `type="button"`.
+
+
+### Single vs multiple mode
+
+**Pattern:** Single mode enforces mutual exclusion (only one open). Multiple mode allows independent toggle. Single mode has an optional `collapsible` prop.
+
+**Implementation:** Internal state is always `string[]`. Single mode constrains the array to 0 or 1 elements. When `collapsible` is false and the user clicks the open item, the toggle is a no-op (the array stays unchanged).
+
+**Edge case:** In single non-collapsible mode, if no `defaultValue` is provided, all items start closed. The first click opens an item, and from that point on, one item is always open. There is no way to return to the "all closed" state without the `collapsible` prop.
+
+**Verifiable assertion:** In single mode, at most one content panel is visible at any time. In single non-collapsible mode, clicking the open trigger must not close it. In multiple mode, any combination of open/closed items is valid.
+
+
+### Content uses role="region"
+
+**Pattern:** The content panel has `role="region"` and `aria-labelledby` pointing to its trigger. This makes each open section a navigable landmark for screen readers.
+
+**Implementation:** `AccordionContent` renders `<div role="region" aria-labelledby={triggerId}>`. When collapsed, the element is unmounted entirely (not hidden with CSS or aria-hidden).
+
+**Design decision:** Unmounting vs hiding. Unmounting is simpler and removes the region from the accessibility tree when collapsed. The tradeoff: internal state resets on collapse. For static content this is fine. A `forceMount` prop can be added in v2 for content with form state.
+
+**Verifiable assertion:** Open content must have `role="region"` and `aria-labelledby` referencing its trigger. Closed content must not exist in the DOM.
+
+
+### Two-level context boundary
+
+**Pattern:** Accordion has two context levels. Root context manages which items are open. Item context provides the specific item's open state and IDs. Trigger and Content require both.
+
+**Implementation:** Using `AccordionTrigger` outside `Accordion.Item` throws a specific error about the Item requirement. Using `Accordion.Item` outside `Accordion` throws about the root requirement. Two distinct error messages for two distinct mistakes.
+
+**Verifiable assertion:** Trigger outside Item must throw. Item outside Accordion must throw. Each error message must identify the correct missing ancestor.
+
+
+### aria-controls always references content ID
+
+**Pattern:** Unlike Dialog (where `aria-controls` is conditional because content unmounts), Accordion trigger always has `aria-controls` pointing to the content ID. The ID is deterministic, not registration-based.
+
+**Implementation:** `aria-controls={contentId}` is always set on the trigger. When the content is closed, this references a non-existent ID. This is the same tradeoff Dialog makes, but reversed: Dialog conditionally sets `aria-controls`, Accordion always sets it. The reasoning: accordion triggers are persistent (always visible), so screen reader users expect the `aria-controls` relationship to exist even when content is collapsed.
+
+**Verifiable assertion:** Trigger must always have `aria-controls` with a value. When content is open, the referenced ID must exist in the DOM.
+
+---
+
 ## Styled Layer
 
 ### Data attributes as styling hook
