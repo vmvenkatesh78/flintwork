@@ -476,6 +476,47 @@ These are explicitly documented in `use-focus-trap.ts` as known limitations:
 
 ---
 
+## Popover
+
+### Non-modal vs modal distinction
+
+**Pattern:** Popover is non-modal. No `aria-modal`, no `role="dialog"`, no overlay. Content behind the popover remains accessible to screen readers and keyboard users. If modal behavior is needed, use Dialog.
+
+**Implementation:** `PopoverContent` renders a plain `<div>` with only an `id`. No role attribute, no aria-modal. The trigger's `aria-haspopup="dialog"` communicates the popup relationship to assistive technology. The content itself is identified by `aria-controls` on the trigger.
+
+**Design decision:** Omitting `role="dialog"` is intentional. A non-modal popup with `role="dialog"` but no `aria-modal` sends mixed signals to screen readers. Some will treat it as modal anyway. Keeping the content role-less avoids this ambiguity. The trigger's `aria-haspopup` is sufficient context.
+
+**Verifiable assertion:** Popover content must NOT have `aria-modal`. Must NOT have `role="dialog"`. Trigger must have `aria-haspopup="dialog"` and `aria-expanded`.
+
+
+### Toggle trigger vs open-only trigger
+
+**Pattern:** Popover trigger toggles (click open, click closed). Dialog trigger only opens. This matches user expectations: a popover is a lightweight panel you toggle, a dialog is a deliberate modal you open and explicitly dismiss.
+
+**Implementation:** `PopoverTrigger` calls `onOpenChange(!open)` on click. `DialogTrigger` calls `onOpenChange(true)` on click.
+
+**Verifiable assertion:** Clicking the popover trigger when open must close the popover. Clicking the dialog trigger when open must not close the dialog.
+
+
+### Focus trap without aria-modal
+
+**Pattern:** Popover traps focus even though it's non-modal. This is a deliberate choice: the popover contains interactive elements (forms, buttons) and losing focus to the page behind would disorient the user. The trap prevents accidental Tab-out.
+
+**Implementation:** Same `useFocusTrap` as Dialog. On close, focus restores to trigger. The difference: Dialog combines focus trap with `aria-modal` (tells screen readers to ignore content behind). Popover traps focus without `aria-modal` (screen readers can still read content behind if they choose to navigate by landmarks or headings).
+
+**Edge case:** A user with a screen reader in browse mode can read content behind the popover even though keyboard focus is trapped. This is correct for non-modal behavior. If the consumer wants fully modal behavior (screen readers also restricted), they should use Dialog.
+
+**Verifiable assertion:** Focus must be trapped within popover content. `aria-modal` must not be present. Focus must restore to trigger on close.
+
+
+### Shared hook reuse across Dialog and Popover
+
+**Pattern:** Dialog and Popover use the same three hooks: `useFocusTrap`, `useClickOutside`, and an Escape keydown handler. The behavioral difference is entirely in ARIA attributes and trigger behavior, not in focus or dismissal logic.
+
+**Implementa
+
+---
+
 ## Styled Layer
 
 ### Data attributes as styling hook
