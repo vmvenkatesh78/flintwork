@@ -1,0 +1,54 @@
+/* Tooltip — Token-driven styles
+ *
+ * Targets [data-fw-tooltip-content] added by the styled wrapper.
+ * All values reference component tokens (--fw-tooltip-*) which reference
+ * semantic tokens, which reference global tokens.
+ *
+ * Option B architecture: intermediate --_ variables scope component
+ * tokens to the element, preventing leakage to children.
+ */
+
+[data-fw-tooltip-content] {
+  --_bg: var(--fw-tooltip-bg);
+  --_text: var(--fw-tooltip-text);
+  --_radius: var(--fw-tooltip-radius);
+  --_shadow: var(--fw-tooltip-shadow);
+  --_font-size: var(--fw-tooltip-font-size);
+  --_padding-x: var(--fw-tooltip-padding-x);
+  --_padding-y: var(--fw-tooltip-padding-y);
+  --_max-width: var(--fw-tooltip-max-width);
+  --_z-index: var(--fw-tooltip-z-index);
+
+  position: fixed;
+  z-index: var(--_z-index);
+  max-width: var(--_max-width);
+  padding: var(--_padding-y) var(--_padding-x);
+  background: var(--_bg);
+  color: var(--_text);
+  font-size: var(--_font-size);
+  line-height: 1.4;
+  border-radius: var(--_radius);
+  box-shadow: var(--_shadow);
+  pointer-events: auto;
+
+  /* Animation */
+  animation: fw-tooltip-in 150ms ease-out;
+}
+
+@keyframes fw-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-fw-tooltip-content] {
+    animation: none;
+  }
+}

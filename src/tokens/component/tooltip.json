@@ -1,0 +1,13 @@
+{
+  "tooltip": {
+    "bg": "{color.bg.inverse}",
+    "text": "{color.text.inverse}",
+    "radius": "{radii.md}",
+    "shadow": "{shadow.md}",
+    "font-size": "{typography.fontSize.sm}",
+    "padding-x": "{spacing.3}",
+    "padding-y": "{spacing.1.5}",
+    "max-width": "280px",
+    "z-index": "{z-index.tooltip}"
+  }
+}
