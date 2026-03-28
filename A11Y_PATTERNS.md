@@ -513,8 +513,52 @@ These are explicitly documented in `use-focus-trap.ts` as known limitations:
 
 **Pattern:** Dialog and Popover use the same three hooks: `useFocusTrap`, `useClickOutside`, and an Escape keydown handler. The behavioral difference is entirely in ARIA attributes and trigger behavior, not in focus or dismissal logic.
 
-**Implementa
+**Implementation:** `PopoverContent` and `DialogContent` are structurally near-identical. The differences: Dialog adds `role="dialog"`, `aria-modal="true"`, `aria-labelledby`, `aria-describedby`. Popover adds none of these. This validates the hook-based architecture: behavior is composed, not duplicated.
 
+**Verifiable assertion for a11y-enforce:** If a component uses `useFocusTrap` + `useClickOutside` + Escape handler AND has `role="dialog"`, it must also have `aria-modal="true"`. If it lacks `role="dialog"`, it must NOT have `aria-modal`.
+
+---
+
+## Menu
+
+### Menuitem uses div, not button
+
+**Pattern:** Menu items use `<div role="menuitem">` instead of `<button role="menuitem">`. A button with role="menuitem" creates redundant announcements in some screen readers: "button, menuitem, Edit" instead of just "menuitem, Edit".
+
+**Implementation:** `MenuItem` renders `<div role="menuitem" tabIndex={-1}>`. The `tabIndex={-1}` makes it programmatically focusable (for roving tabindex) without putting it in the natural tab order. `data-roving-item` marks it for the roving tabindex hook.
+
+**Verifiable assertion:** Menu items must have `role="menuitem"`. Must NOT be `<button>` elements. Must have `tabIndex` set (0 for active, -1 for inactive).
+
+
+### Typeahead search
+
+**Pattern:** Typing a character while a menu is open must focus the first item whose text starts with that character. Typing multiple characters within 500ms builds a search string for longer matches.
+
+**Implementation:** `MenuContent` attaches a keydown listener that captures single printable characters (ignoring modifier keys). Characters accumulate in a ref-based buffer. A 500ms timeout resets the buffer. On each keystroke, the handler searches all non-disabled menuitems for a textContent match.
+
+**Edge case:** Typeahead must not interfere with arrow keys, Escape, Enter, Space, Home, or End. The handler only processes keys where `event.key.length === 1` (single printable characters). Modifier combos (Ctrl+C, etc.) are also excluded.
+
+**Design decision:** Typeahead is implemented in MenuContent, not in useRovingTabIndex. Typeahead is specific to menu/listbox/combobox patterns and would pollute the generic roving hook if added there. Keeping it separate means the hook stays reusable for tabs and toolbars that don't need typeahead.
+
+**Verifiable assertion:** Typing "a" must focus the first non-disabled item starting with "a". Typing "du" within 500ms must match "Duplicate" over "Delete". Typing after 500ms gap must start a fresh search.
+
+
+### Item selection closes menu
+
+**Pattern:** Selecting a menu item (click, Enter, or Space) must close the menu. This is the fundamental behavioral difference from Popover: menu items are actions, not persistent controls.
+
+**Implementation:** `MenuItem.handleSelect` calls `onSelect()` then `onOpenChange(false)`. Both click and keydown handlers route through `handleSelect`. Disabled items short-circuit before either call.
+
+**Verifiable assertion:** Clicking a non-disabled item must call onSelect AND close the menu. Enter/Space on a focused item must do the same. Disabled items must not call onSelect and must not close the menu.
+
+
+### aria-haspopup="menu" vs "dialog"
+
+**Pattern:** Menu trigger uses `aria-haspopup="menu"`. Dialog and Popover triggers use `aria-haspopup="dialog"`. Screen readers announce different expectations based on this value: "menu" signals arrow key navigation between items, "dialog" signals Tab navigation within content.
+
+**Implementation:** `MenuTrigger` sets `aria-haspopup: 'menu'`. `PopoverTrigger` and `DialogTrigger` set `aria-haspopup: 'dialog'`.
+
+**Verifiable assertion for a11y-enforce:** A trigger with `aria-haspopup="menu"` must control content with `role="menu"`. A trigger with `aria-haspopup="dialog"` must control content with `role="dialog"` or no role (Popover). Mismatched haspopup/role pairs are a violation.
 ---
 
 ## Styled Layer

@@ -1,0 +1,82 @@
+/* Menu — Token-driven styles
+ *
+ * Targets data-fw-menu-* attributes. Option B intermediate variables.
+ */
+
+[data-fw-menu-content] {
+  --_bg: var(--fw-menu-bg);
+  --_border-color: var(--fw-menu-border-color);
+  --_radius: var(--fw-menu-radius);
+  --_shadow: var(--fw-menu-shadow);
+  --_padding: var(--fw-menu-padding);
+  --_min-width: var(--fw-menu-min-width);
+  --_z-index: var(--fw-menu-z-index);
+
+  position: fixed;
+  z-index: var(--_z-index);
+  min-width: var(--_min-width);
+  padding: var(--_padding);
+  background: var(--_bg);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
+  box-shadow: var(--_shadow);
+
+  animation: fw-menu-in 100ms ease-out;
+}
+
+[data-fw-menu-item] {
+  --_text: var(--fw-menu-item-text);
+  --_text-hover: var(--fw-menu-item-text-hover);
+  --_bg-hover: var(--fw-menu-item-bg-hover);
+  --_font-size: var(--fw-menu-item-font-size);
+  --_padding-x: var(--fw-menu-item-padding-x);
+  --_padding-y: var(--fw-menu-item-padding-y);
+  --_radius: var(--fw-menu-item-radius);
+
+  display: flex;
+  align-items: center;
+  padding: var(--_padding-y) var(--_padding-x);
+  color: var(--_text);
+  font-size: var(--_font-size);
+  line-height: 1.4;
+  border-radius: var(--_radius);
+  cursor: pointer;
+  user-select: none;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+[data-fw-menu-item]:hover,
+[data-fw-menu-item]:focus-visible {
+  background: var(--_bg-hover);
+  color: var(--_text-hover);
+  outline: none;
+}
+
+[data-fw-menu-item][data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+[data-fw-menu-item][data-disabled]:hover {
+  background: transparent;
+}
+
+@keyframes fw-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fw-menu-content] {
+    animation: none;
+  }
+  [data-fw-menu-item] {
+    transition: none;
+  }
+}
