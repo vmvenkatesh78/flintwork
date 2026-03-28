@@ -559,6 +559,65 @@ These are explicitly documented in `use-focus-trap.ts` as known limitations:
 **Implementation:** `MenuTrigger` sets `aria-haspopup: 'menu'`. `PopoverTrigger` and `DialogTrigger` set `aria-haspopup: 'dialog'`.
 
 **Verifiable assertion for a11y-enforce:** A trigger with `aria-haspopup="menu"` must control content with `role="menu"`. A trigger with `aria-haspopup="dialog"` must control content with `role="dialog"` or no role (Popover). Mismatched haspopup/role pairs are a violation.
+
+---
+
+## Select
+
+### Listbox opens with focus on selected item
+
+**Pattern:** When the listbox opens, focus must land on the currently selected option, not the first option. This lets the user see their current selection and navigate from there.
+
+**Implementation:** `SelectContent` useEffect checks for a `[data-value="${selectedValue}"]` element on mount. If found, sets its tabindex to 0, all others to -1, and calls `.focus()`. Falls back to the first non-disabled item if no selection exists.
+
+**Verifiable assertion:** Opening a Select with a selected value must focus the matching option. Opening with no selection must focus the first non-disabled option.
+
+
+### Item text registry for value display
+
+**Pattern:** Select.Value must display the human-readable text of the selected option ("Red"), not the raw value string ("red"). But the items only mount when the listbox opens.
+
+**Implementation:** Each `SelectItem` registers its `textContent` into a ref-based `Map<string, string>` on mount and deregisters on unmount. `SelectValue` reads from this map. Before the listbox has been opened at least once, the map is empty and SelectValue falls back to the raw value string.
+
+**Edge case:** On initial render with a defaultValue, the items haven't mounted yet so the map is empty. The trigger shows the raw value ("red") instead of the display text ("Red"). After the user opens and closes the listbox once, items register and the display text corrects. Acceptable tradeoff for v1. Fix options: render items offscreen on mount, accept items as data props, or add a label map prop.
+
+**Verifiable assertion:** After items have mounted at least once, SelectValue must display the registered text, not the raw value.
+
+
+### aria-haspopup="listbox" vs "menu" vs "dialog"
+
+**Pattern:** Select trigger uses `aria-haspopup="listbox"`. This is distinct from Menu ("menu") and Dialog/Popover ("dialog"). Screen readers use this value to set user expectations about the popup's interaction model.
+
+**Implementation:** `SelectTrigger` renders `<button aria-haspopup="listbox">`. Content has `role="listbox"`. Items have `role="option"` with `aria-selected`.
+
+**Verifiable assertion for a11y-enforce:** `aria-haspopup="listbox"` must pair with `role="listbox"` on content and `role="option"` on items. `aria-haspopup="menu"` must pair with `role="menu"` and `role="menuitem"`. Mismatched pairs are violations.
+
+
+### Option uses div with role, not button
+
+**Pattern:** Same reasoning as Menu. `<div role="option">` avoids redundant screen reader announcements from `<button role="option">`. Options are focusable via `tabIndex` and selectable via Enter/Space with explicit keyboard handlers.
+
+**Implementation:** `SelectItem` renders `<div role="option" tabIndex={-1} data-roving-item="">`. Click and keydown handlers call `handleSelect`. Enter and Space trigger selection and close the listbox.
+
+**Verifiable assertion:** Select options must have `role="option"`. Must NOT be `<button>` elements. Must handle Enter and Space key events explicitly.
+
+
+### Escape closes without changing selection
+
+**Pattern:** Pressing Escape in the listbox must close it without modifying the selected value. This is the "cancel" action. Selection only changes when an item is explicitly clicked or confirmed with Enter/Space.
+
+**Implementation:** Escape handler calls `onOpenChange(false)` only. Does not call `onValueChange`. Focus restores to trigger via useFocusTrap cleanup.
+
+**Verifiable assertion:** After pressing Escape, the listbox must close. The displayed value must be unchanged from before the listbox opened.
+
+
+### data-state for selected item styling
+
+**Pattern:** Selected item has `data-state="checked"`, unselected items have `data-state="unchecked"`. CSS uses this for visual selection indicator without JavaScript style manipulation.
+
+**Implementation:** `SelectItem` computes `data-state` from `selectedValue === value`. The styled CSS uses `[data-fw-select-item][data-state="checked"]` for the selected background.
+
+**Verifiable assertion:** Exactly one option in the listbox must have `data-state="checked"` at any time (when a value is selected). All others must have `data-state="unchecked"`.
 ---
 
 ## Styled Layer
