@@ -347,6 +347,78 @@ These are explicitly documented in `use-focus-trap.ts` as known limitations:
 
 **Test:** `use-controllable.test.ts` covers mode switching warning
 
+---
+
+## Tooltip
+
+### Hover vs focus show behavior
+
+**Pattern:** Tooltip must appear on both hover AND focus. Hover-only tooltips are invisible to keyboard users. Focus-only tooltips are invisible to mouse users.
+
+**Implementation:** `TooltipTrigger` attaches `onMouseEnter` (calls `show` with delay) and `onFocus` (calls `showImmediate` with no delay). Keyboard users get the tooltip instantly because they shouldn't wait 700ms after tabbing to an element.
+
+**Edge case discovered (jsdom):** Native `.focus()` does not fire React's synthetic `onFocus` handler in jsdom. Tests need both `trigger.focus()` (sets `document.activeElement`) and `fireEvent.focus(trigger)` (fires the React handler). Without both, either the tooltip doesn't show or `document.activeElement` assertions fail.
+
+**Verifiable assertion:** Hovering the trigger must show the tooltip after `showDelay` ms. Focusing the trigger must show the tooltip immediately (0ms delay). Both paths must result in the tooltip being visible.
+
+**Test:** `tooltip.test.tsx` > "shows tooltip after show delay on mouse enter", "shows tooltip immediately on focus (no delay)"
+
+
+### Hover-to-stay on content
+
+**Pattern:** When the mouse moves from trigger to tooltip content, the tooltip must not disappear. The user needs to be able to read long tooltip text.
+
+**Implementation:** `TooltipContent` has `onMouseEnter` which calls `show()` (cancels the hide timer). `onMouseLeave` calls `hide()` (restarts the hide delay). The `show` function in root clears all timers before starting a new one, so calling it when already open is a no-op that just cancels any pending hide.
+
+**Verifiable assertion:** Moving mouse from trigger to tooltip content must keep the tooltip visible. Moving mouse away from tooltip content must start the hide delay.
+
+**Test:** `tooltip.test.tsx` > "cancels hide when mouse enters tooltip content", "hides when mouse leaves tooltip content"
+
+
+### Escape dismisses without moving focus
+
+**Pattern:** Pressing Escape must hide the tooltip without changing which element has focus. This differs from Dialog where Escape closes AND restores focus. Tooltip has no focus trap, so there's nothing to restore.
+
+**Implementation:** Root component attaches a document-level keydown listener for Escape (only while open). Calls `hideImmediate` which clears timers and sets open to false. No focus manipulation.
+
+**Verifiable assertion:** After pressing Escape, the tooltip must not be visible AND `document.activeElement` must be the same element that had focus before Escape was pressed.
+
+**Test:** `tooltip.test.tsx` > "hides on Escape without moving focus"
+
+
+### Conditional aria-describedby
+
+**Pattern:** `aria-describedby` on the trigger should only reference the tooltip ID when the tooltip is in the DOM. Referencing a non-existent ID is invalid HTML.
+
+**Implementation:** `TooltipTrigger` conditionally spreads `aria-describedby` only when `open` is true: `...(open ? { 'aria-describedby': tooltipId } : {})`. Same tradeoff as Dialog's conditional `aria-controls`.
+
+**Design decision:** Some screen readers cache `aria-describedby` on first focus and won't re-read it when the tooltip appears. This means keyboard users might not hear the tooltip description announced if it appears after focus. The alternative (always setting `aria-describedby` with the tooltip always in the DOM but visually hidden) would fix this but conflicts with Portal-based conditional rendering. Accepted tradeoff for v1.
+
+**Verifiable assertion:** `aria-describedby` must be present on the trigger only when the tooltip is visible. Must not reference a non-existent ID.
+
+**Test:** `tooltip.test.tsx` > "trigger has aria-describedby pointing to tooltip when open", "trigger does not have aria-describedby when closed"
+
+
+### Show/hide delay prevents flicker
+
+**Pattern:** Tooltip must not appear on accidental mouse pass-through. A delay before showing (700ms default) prevents flicker when the user moves the mouse across the trigger without intending to read the tooltip.
+
+**Implementation:** `show` function in root starts a timer. If `hide` is called before the timer fires (mouse left the trigger), the show timer is cleared and the tooltip never appears. `clearTimers` cancels both show and hide timers on every state transition.
+
+**Edge case:** Without a hide delay (300ms default), moving from trigger to tooltip content would dismiss the tooltip in the gap between the two elements. The hide delay gives the user time to move the mouse from trigger to content.
+
+**Verifiable assertion:** Mouse entering then leaving the trigger within `showDelay` ms must not show the tooltip. Tooltip visible after `showDelay` must remain visible for at least `hideDelay` ms after mouse leaves.
+
+**Test:** `tooltip.test.tsx` > "does not show tooltip if mouse leaves before delay", "hides tooltip after hide delay on mouse leave"
+
+
+### Tooltip content is non-interactive
+
+**Pattern:** Tooltip must not contain focusable elements. No links, buttons, inputs, or anything interactive. If interactive content is needed, use Popover instead.
+
+**Implementation:** No focus trap in tooltip (unlike Dialog). No `tabIndex` on content (unlike TabsPanel). The tooltip is read-only information. This is enforced by documentation and convention, not by runtime validation.
+
+**Verifiable assertion:** Tooltip content should not contain any elements matching the tabbable selector. This could become a dev-mode warning in future.
 
 ---
 
