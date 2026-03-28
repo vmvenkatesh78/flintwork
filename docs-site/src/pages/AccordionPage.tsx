@@ -21,18 +21,6 @@ const ACCORDION_DOM = `<div data-accordion="">
       data-state="open"
     >Content here</div>
   </div>
-
-  <div data-fw-accordion-item="" data-state="closed">
-    <h3>
-      <button
-        data-fw-accordion-trigger=""
-        type="button"
-        aria-expanded="false"
-        aria-controls="content-2"
-        data-state="closed"
-      >Address</button>
-    </h3>
-  </div>
 </div>`;
 
 export function AccordionPage() {
@@ -64,20 +52,17 @@ export function AccordionPage() {
               <Accordion type="single" defaultValue="item-1">
                 <Accordion.Item value="item-1">
                   <Accordion.Trigger>Personal Information</Accordion.Trigger>
-                  <Accordion.Content>Name, email, phone number fields.</Accordion.Content>
+                  <Accordion.Content>Name, email, phone number fields would go here.</Accordion.Content>
                 </Accordion.Item>
                 <Accordion.Item value="item-2">
-                  <Accordion.Trigger>Address</Accordion.Trigger>
-                  <Accordion.Content>Street, city, state, zip code fields.</Accordion.Content>
+                  <Accordion.Trigger>Billing Address</Accordion.Trigger>
+                  <Accordion.Content>Street, city, state, and zip code fields.</Accordion.Content>
                 </Accordion.Item>
                 <Accordion.Item value="item-3">
-                  <Accordion.Trigger>Preferences</Accordion.Trigger>
-                  <Accordion.Content>Notification and display settings.</Accordion.Content>
+                  <Accordion.Trigger>Notification Preferences</Accordion.Trigger>
+                  <Accordion.Content>Email, SMS, and push notification settings.</Accordion.Content>
                 </Accordion.Item>
               </Accordion>
-              <p style={{ fontSize: 'var(--fw-fontSize-xs)', color: 'var(--fw-color-text-tertiary)', marginTop: 'var(--fw-spacing-3)' }}>
-                Border separators, hover state, focus-visible outline.
-              </p>
             </div>
           </div>
         </div>
@@ -93,15 +78,25 @@ export function AccordionPage() {
             <Accordion type="single" defaultValue="faq-1">
               <Accordion.Item value="faq-1">
                 <Accordion.Trigger>What is flintwork?</Accordion.Trigger>
-                <Accordion.Content>A headless React component library with token-driven styling.</Accordion.Content>
+                <Accordion.Content>
+                  A headless React component library with a three-tier design token pipeline
+                  and full WAI-ARIA compliance. Eight components, 280+ tests, zero runtime CSS.
+                </Accordion.Content>
               </Accordion.Item>
               <Accordion.Item value="faq-2">
                 <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
-                <Accordion.Content>Full WAI-ARIA compliance with keyboard navigation and screen reader support.</Accordion.Content>
+                <Accordion.Content>
+                  Every component follows WAI-ARIA Authoring Practices. Focus trapping, roving
+                  tabindex, keyboard navigation, screen reader announcements, and proper ARIA
+                  attributes are built into the headless layer.
+                </Accordion.Content>
               </Accordion.Item>
               <Accordion.Item value="faq-3">
                 <Accordion.Trigger>Can I use my own styles?</Accordion.Trigger>
-                <Accordion.Content>Yes. Import from flintwork/primitives for the headless layer with zero styling.</Accordion.Content>
+                <Accordion.Content>
+                  Yes. Import from flintwork/primitives for headless components with zero styling.
+                  The data attributes on the DOM give you full control over presentation.
+                </Accordion.Content>
               </Accordion.Item>
             </Accordion>
           </div>
@@ -109,10 +104,6 @@ export function AccordionPage() {
   <Accordion.Item value="faq-1">
     <Accordion.Trigger>What is flintwork?</Accordion.Trigger>
     <Accordion.Content>A headless React component library...</Accordion.Content>
-  </Accordion.Item>
-  <Accordion.Item value="faq-2">
-    <Accordion.Trigger>Is it accessible?</Accordion.Trigger>
-    <Accordion.Content>Full WAI-ARIA compliance...</Accordion.Content>
   </Accordion.Item>
 </Accordion>`} />
         </div>
@@ -127,16 +118,16 @@ export function AccordionPage() {
           <div className="demo-preview" style={{ flexDirection: 'column', alignItems: 'stretch' }}>
             <Accordion type="multiple" defaultValue={['m-1', 'm-2']}>
               <Accordion.Item value="m-1">
-                <Accordion.Trigger>Section A</Accordion.Trigger>
-                <Accordion.Content>Content for section A. Both sections start open.</Accordion.Content>
+                <Accordion.Trigger>Design Tokens</Accordion.Trigger>
+                <Accordion.Content>Three-tier architecture: global raw values, semantic intent mappings, component-specific bindings.</Accordion.Content>
               </Accordion.Item>
               <Accordion.Item value="m-2">
-                <Accordion.Trigger>Section B</Accordion.Trigger>
-                <Accordion.Content>Content for section B. Toggle independently.</Accordion.Content>
+                <Accordion.Trigger>Headless Layer</Accordion.Trigger>
+                <Accordion.Content>Behavior, state, keyboard interactions, and ARIA. Zero styling. Data attributes for CSS hooks.</Accordion.Content>
               </Accordion.Item>
               <Accordion.Item value="m-3">
-                <Accordion.Trigger>Section C</Accordion.Trigger>
-                <Accordion.Content>Content for section C.</Accordion.Content>
+                <Accordion.Trigger>Styled Layer</Accordion.Trigger>
+                <Accordion.Content>One data attribute per component. CSS reads component tokens via intermediate variables.</Accordion.Content>
               </Accordion.Item>
             </Accordion>
           </div>
