@@ -1,0 +1,120 @@
+/* Select — Token-driven styles
+ *
+ * Targets data-fw-select-* attributes. Option B intermediate variables.
+ */
+
+[data-fw-select-trigger] {
+  --_bg: var(--fw-select-trigger-bg);
+  --_border-color: var(--fw-select-trigger-border-color);
+  --_text: var(--fw-select-trigger-text);
+  --_radius: var(--fw-select-trigger-radius);
+  --_padding-x: var(--fw-select-trigger-padding-x);
+  --_padding-y: var(--fw-select-trigger-padding-y);
+  --_font-size: var(--fw-select-trigger-font-size);
+  --_min-width: var(--fw-select-trigger-min-width);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: var(--_min-width);
+  padding: var(--_padding-y) var(--_padding-x);
+  background: var(--_bg);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
+  color: var(--_text);
+  font-family: inherit;
+  font-size: var(--_font-size);
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: left;
+}
+
+[data-fw-select-trigger]:focus-visible {
+  outline: 2px solid var(--fw-color-border-focus);
+  outline-offset: 2px;
+}
+
+[data-fw-select-trigger] [data-placeholder] {
+  color: var(--fw-select-placeholder-text);
+}
+
+[data-fw-select-content] {
+  --_bg: var(--fw-select-content-bg);
+  --_border-color: var(--fw-select-content-border-color);
+  --_radius: var(--fw-select-content-radius);
+  --_shadow: var(--fw-select-content-shadow);
+  --_padding: var(--fw-select-content-padding);
+  --_z-index: var(--fw-select-content-z-index);
+
+  position: fixed;
+  z-index: var(--_z-index);
+  min-width: 180px;
+  padding: var(--_padding);
+  background: var(--_bg);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
+  box-shadow: var(--_shadow);
+
+  animation: fw-select-in 100ms ease-out;
+}
+
+[data-fw-select-item] {
+  --_text: var(--fw-select-item-text);
+  --_bg-hover: var(--fw-select-item-bg-hover);
+  --_bg-selected: var(--fw-select-item-bg-selected);
+  --_font-size: var(--fw-select-item-font-size);
+  --_padding-x: var(--fw-select-item-padding-x);
+  --_padding-y: var(--fw-select-item-padding-y);
+  --_radius: var(--fw-select-item-radius);
+
+  display: flex;
+  align-items: center;
+  padding: var(--_padding-y) var(--_padding-x);
+  color: var(--_text);
+  font-size: var(--_font-size);
+  line-height: 1.4;
+  border-radius: var(--_radius);
+  cursor: pointer;
+  user-select: none;
+  transition: background 100ms ease;
+}
+
+[data-fw-select-item]:hover,
+[data-fw-select-item]:focus-visible {
+  background: var(--_bg-hover);
+  outline: none;
+}
+
+[data-fw-select-item][data-state="checked"] {
+  background: var(--_bg-selected);
+}
+
+[data-fw-select-item][data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+[data-fw-select-item][data-disabled]:hover {
+  background: transparent;
+}
+
+@keyframes fw-select-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fw-select-content] {
+    animation: none;
+  }
+  [data-fw-select-item] {
+    transition: none;
+  }
+}
