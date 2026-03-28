@@ -1,0 +1,72 @@
+/* Accordion — Token-driven styles
+ *
+ * Targets data-fw-accordion-* attributes added by the styled wrapper.
+ * Option B architecture: --_ intermediate variables prevent token leakage.
+ */
+
+[data-fw-accordion-item] {
+  --_border-color: var(--fw-accordion-border-color);
+
+  border-bottom: 1px solid var(--_border-color);
+}
+
+[data-fw-accordion-item]:first-child {
+  border-top: 1px solid var(--_border-color);
+}
+
+[data-fw-accordion-trigger] {
+  --_text: var(--fw-accordion-trigger-text);
+  --_text-hover: var(--fw-accordion-trigger-text-hover);
+  --_font-size: var(--fw-accordion-trigger-font-size);
+  --_font-weight: var(--fw-accordion-trigger-font-weight);
+  --_padding-y: var(--fw-accordion-trigger-padding-y);
+
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--_padding-y) 0;
+  background: none;
+  border: none;
+  color: var(--_text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--_font-size);
+  font-weight: var(--_font-weight);
+  line-height: 1.4;
+  text-align: left;
+  transition: color 150ms ease;
+}
+
+[data-fw-accordion-trigger]:hover {
+  color: var(--_text-hover);
+}
+
+[data-fw-accordion-trigger]:focus-visible {
+  outline: 2px solid var(--fw-color-border-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+[data-fw-accordion-trigger][data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+[data-fw-accordion-content] {
+  --_padding-bottom: var(--fw-accordion-content-padding-bottom);
+  --_text: var(--fw-accordion-content-text);
+  --_font-size: var(--fw-accordion-content-font-size);
+
+  padding-bottom: var(--_padding-bottom);
+  color: var(--_text);
+  font-size: var(--_font-size);
+  line-height: 1.6;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-fw-accordion-trigger] {
+    transition: none;
+  }
+}
