@@ -1,6 +1,6 @@
 {
   "name": "flintwork",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A hand-crafted design system with headless primitives, token-driven theming, and built-in accessibility.",
   "author": "Venkatesh Mukundan <vmvenkatesh78@gmail.com>",
   "license": "MIT",
@@ -32,13 +32,15 @@
       "import": "./dist/primitives/index.js",
       "require": "./dist/primitives/index.cjs"
     },
-    "./styles": "./dist/styled/index.css",
+    "./styles/accordion": "./dist/styled/accordion.css",
     "./styles/button": "./dist/styled/button.css",
     "./styles/dialog": "./dist/styled/dialog.css",
+    "./styles/menu": "./dist/styled/menu.css",
+    "./styles/popover": "./dist/styled/popover.css",
+    "./styles/select": "./dist/styled/select.css",
     "./styles/tabs": "./dist/styled/tabs.css",
-    "./tokens": "./dist/tokens/tokens.css",
-    "./tokens/light": "./dist/tokens/light.css",
-    "./tokens/dark": "./dist/tokens/dark.css"
+    "./styles/tooltip": "./dist/styled/tooltip.css"
+    
   },
   "files": [
     "dist",
